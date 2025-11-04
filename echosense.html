@@ -1,57 +1,163 @@
-<html>
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
-    />
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoiceGraph | 聴く・話す・残す 英語AIツール</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #fff;
+      --accent: #2563eb;
+      --accent2: #3b82f6;
+      --text: #1e293b;
+      --muted: #64748b;
+      --radius: 20px;
+      --shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
 
-    <title>Stitch Design</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    * {
+      box-sizing: border-box;
+      font-family: "Noto Sans JP", "Roboto", sans-serif;
+      transition: all 0.3s ease;
+    }
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-  <body>
-    <div class="relative flex h-auto min-h-screen w-full flex-col bg-[#1a1122] dark group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3SIH6AytAF3RTFNF-dY92TguwJcTUbNpwZxPY8nCXE86rgjxnm2yWpeUiqd7-EGmWlANTESxSXE_2WDEdeCUmeMkMIPJ1wH4pJWdJS7WKkmZ3u0GX1QWwkAXO2lNKqarSZdDDmQqAyyCb1qmYNcV3F1_KSKEXfyglCVo1ZdyWbwTRMbPLlJG6oQSnZgbZvvoJdnU-B6QqzqO48Jn4pDlNLivGRgRNOZ6FqJth1yvN7Kjy9jtVgJPAiF1PXOQORPJIkZOtFgVNqck");'
-                >
-                  <div class="flex flex-col gap-2 text-center">
-                    <h1
-                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                    >
-                      🎧 EchoSense（エコーセンス）
-                    </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                      声でわかる、学びのAIパートナー。 英語を聴いて・話して・記録する、あなた専用のAI学習ツール
-                    </h2>
-                  </div>
-                  <div class="flex-wrap gap-3 flex justify-center">
-                    <button
-                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#8013ec] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                    >
-                      <span class="truncate">🎧 リスニングチェックへ</span>
-                    </button>
-                    <button
-                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#362348] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                    >
-                      <span class="truncate">📄 レポート生成へ</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding: 40px 20px 60px;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    section {
+      max-width: 800px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    section h3 {
+      color: var(--accent);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    section p {
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    a {
+      display: block;
+      padding: 1.2rem 2rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.1rem;
+      width: 250px;
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(37,99,235,0.25);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      background: #f1f5f9;
+      width: 100%;
+      border-top: 1px solid #e2e8f0;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>VoiceGraph</h1>
+      <h2>AIで「聴く・話す・残す」をひとつに。</h2>
+    </header>
+
+    <section>
+      <h3>🎯 アプリ概要</h3>
+      <p>
+        <b>VoiceGraph</b>は、英語学習をより実践的にサポートするAIアプリです。<br>
+        「リスニングチェック」と「音声レポート作成」という2つのAI機能を搭載し、<br>
+        あなたの“英語の理解力”と“発音スキル”を可視化・記録します。
+      </p>
+    </section>
+
+    <section>
+      <h3>🎧 Listening Check（リスニングチェック）</h3>
+      <p>
+        英文を再生し、あなたが聞き取った通りに声で復唱します。<br>
+        AIが音声を認識し、正解との一致度を自動スコア化。<br>
+        苦手な発音・聞き取りを定量的に把握できます。
+      </p>
+    </section>
+
+    <section>
+      <h3>📄 Voice Report（音声レポート作成）</h3>
+      <p>
+        会議や発表、インタビューなどの音声をアップロードすると、<br>
+        AIが自動で文字起こし・要約を行い、WordやPDF形式でレポート化します。<br>
+        学習記録や業務報告にもそのまま使える便利な機能です。
+      </p>
+    </section>
+
+    <div class="buttons">
+      <a href="listening.html">🎧 リスニングチェックを試す</a>
+      <a href="report.html">📄 レポートを作成する</a>
     </div>
-  </body>
+  </main>
+
+  <footer>© 2025 VoiceGraph AI</footer>
+</body>
 </html>
