@@ -29,10 +29,16 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      justify-content: center;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       text-align: center;
-      padding: 40px 20px 100px;
+      padding: 40px 20px 60px;
     }
 
     header {
@@ -101,50 +107,56 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 10px;
+      text-align: center;
+      padding: 20px 0;
       font-size: 0.9rem;
       color: var(--muted);
+      background: #f1f5f9;
+      width: 100%;
+      border-top: 1px solid #e2e8f0;
+      margin-top: auto;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>VoiceGraph</h1>
-    <h2>AIで「聴く・話す・残す」をひとつに。</h2>
-  </header>
+  <main>
+    <header>
+      <h1>VoiceGraph</h1>
+      <h2>AIで「聴く・話す・残す」をひとつに。</h2>
+    </header>
 
-  <section>
-    <h3>🎯 アプリ概要</h3>
-    <p>
-      <b>VoiceGraph</b>は、英語学習をより実践的にサポートするAIアプリです。<br>
-      「リスニングチェック」と「音声レポート作成」という2つのAI機能を搭載し、<br>
-      あなたの“英語の理解力”と“発音スキル”を可視化・記録します。
-    </p>
-  </section>
+    <section>
+      <h3>🎯 アプリ概要</h3>
+      <p>
+        <b>VoiceGraph</b>は、英語学習をより実践的にサポートするAIアプリです。<br>
+        「リスニングチェック」と「音声レポート作成」という2つのAI機能を搭載し、<br>
+        あなたの“英語の理解力”と“発音スキル”を可視化・記録します。
+      </p>
+    </section>
 
-  <section>
-    <h3>🎧 Listening Check（リスニングチェック）</h3>
-    <p>
-      英文を再生し、あなたが聞き取った通りに声で復唱します。<br>
-      AIが音声を認識し、正解との一致度を自動スコア化。<br>
-      苦手な発音・聞き取りを定量的に把握できます。
-    </p>
-  </section>
+    <section>
+      <h3>🎧 Listening Check（リスニングチェック）</h3>
+      <p>
+        英文を再生し、あなたが聞き取った通りに声で復唱します。<br>
+        AIが音声を認識し、正解との一致度を自動スコア化。<br>
+        苦手な発音・聞き取りを定量的に把握できます。
+      </p>
+    </section>
 
-  <section>
-    <h3>📄 Voice Report（音声レポート作成）</h3>
-    <p>
-      会議や発表、インタビューなどの音声をアップロードすると、<br>
-      AIが自動で文字起こし・要約を行い、WordやPDF形式でレポート化します。<br>
-      学習記録や業務報告にもそのまま使える便利な機能です。
-    </p>
-  </section>
+    <section>
+      <h3>📄 Voice Report（音声レポート作成）</h3>
+      <p>
+        会議や発表、インタビューなどの音声をアップロードすると、<br>
+        AIが自動で文字起こし・要約を行い、WordやPDF形式でレポート化します。<br>
+        学習記録や業務報告にもそのまま使える便利な機能です。
+      </p>
+    </section>
 
-  <div class="buttons">
-    <a href="listening.html">🎧 リスニングチェックを試す</a>
-    <a href="report.html">📄 レポートを作成する</a>
-  </div>
+    <div class="buttons">
+      <a href="listening.html">🎧 リスニングチェックを試す</a>
+      <a href="report.html">📄 レポートを作成する</a>
+    </div>
+  </main>
 
   <footer>© 2025 VoiceGraph AI</footer>
 </body>
