@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoiceGraph | 英語を「聴く」「話す」「残す」</title>
+  <title>VoiceGraph | 聴く・話す・残す 英語AIツール</title>
   <style>
     :root {
-      --bg: #f9fbfd;
+      --bg: #f8fafc;
       --card: #fff;
-      --accent: #4f46e5;
-      --accent2: #818cf8;
+      --accent: #2563eb;
+      --accent2: #3b82f6;
       --text: #1e293b;
       --muted: #64748b;
       --radius: 20px;
@@ -18,7 +18,7 @@
 
     * {
       box-sizing: border-box;
-      font-family: "Noto Sans JP", sans-serif;
+      font-family: "Noto Sans JP", "Roboto", sans-serif;
       transition: all 0.3s ease;
     }
 
@@ -32,18 +32,44 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 40px 20px 100px;
+    }
+
+    header {
+      margin-bottom: 2rem;
     }
 
     h1 {
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    section {
+      max-width: 800px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    section h3 {
+      color: var(--accent);
+      font-size: 1.4rem;
       margin-bottom: 0.5rem;
     }
 
-    p {
-      color: var(--muted);
-      margin-bottom: 3rem;
+    section p {
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 1rem;
     }
 
     .buttons {
@@ -51,6 +77,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     a {
@@ -69,8 +96,8 @@
     a:hover {
       background: var(--accent);
       color: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(79,70,229,0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(37,99,235,0.25);
     }
 
     footer {
@@ -82,15 +109,42 @@
   </style>
 </head>
 <body>
-  <main>
+  <header>
     <h1>VoiceGraph</h1>
-    <p>AIで「聴く・話す・残す」をひとつに。<br>あなたの英語学習を進化させる2つのツール。</p>
+    <h2>AIで「聴く・話す・残す」をひとつに。</h2>
+  </header>
 
-    <div class="buttons">
-      <a href="listening.html">🎧 Listening Check</a>
-      <a href="report.html">📄 Voice Report</a>
-    </div>
-  </main>
+  <section>
+    <h3>🎯 アプリ概要</h3>
+    <p>
+      <b>VoiceGraph</b>は、英語学習をより実践的にサポートするAIアプリです。<br>
+      「リスニングチェック」と「音声レポート作成」という2つのAI機能を搭載し、<br>
+      あなたの“英語の理解力”と“発音スキル”を可視化・記録します。
+    </p>
+  </section>
+
+  <section>
+    <h3>🎧 Listening Check（リスニングチェック）</h3>
+    <p>
+      英文を再生し、あなたが聞き取った通りに声で復唱します。<br>
+      AIが音声を認識し、正解との一致度を自動スコア化。<br>
+      苦手な発音・聞き取りを定量的に把握できます。
+    </p>
+  </section>
+
+  <section>
+    <h3>📄 Voice Report（音声レポート作成）</h3>
+    <p>
+      会議や発表、インタビューなどの音声をアップロードすると、<br>
+      AIが自動で文字起こし・要約を行い、WordやPDF形式でレポート化します。<br>
+      学習記録や業務報告にもそのまま使える便利な機能です。
+    </p>
+  </section>
+
+  <div class="buttons">
+    <a href="listening.html">🎧 リスニングチェックを試す</a>
+    <a href="report.html">📄 レポートを作成する</a>
+  </div>
 
   <footer>© 2025 VoiceGraph AI</footer>
 </body>
