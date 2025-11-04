@@ -1,51 +1,97 @@
-import streamlit as st
-from PIL import Image
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoiceGraph | 英語を「聴く」「話す」「残す」</title>
+  <style>
+    :root {
+      --bg: #f9fbfd;
+      --card: #fff;
+      --accent: #4f46e5;
+      --accent2: #818cf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --radius: 20px;
+      --shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
 
-# =========================
-# 🎧 EchoSense ホーム画面
-# =========================
+    * {
+      box-sizing: border-box;
+      font-family: "Noto Sans JP", sans-serif;
+      transition: all 0.3s ease;
+    }
 
-st.set_page_config(
-    page_title="EchoSense - AI英語学習ツール",
-    page_icon="🎧",
-    layout="centered"
-)
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-# ---- ヘッダー部分 ----
-st.title("🎧 EchoSense（エコーセンス）")
-st.subheader("声でわかる、学びのAIパートナー。")
-st.write("英語を **聴いて・話して・記録する** ことで、あなたの英語力を見える化します。")
+    h1 {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
 
-# ---- メインビジュアル（任意） ----
-# 画像を置く場合は同じフォルダに「hero.png」などを入れる
-# image = Image.open("hero.png")
-# st.image(image, use_column_width=True)
+    p {
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
 
-st.divider()
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
 
-# ---- アプリ紹介カード ----
-col1, col2 = st.columns(2)
+    a {
+      display: block;
+      padding: 1.2rem 2rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.1rem;
+      width: 250px;
+    }
 
-with col1:
-    st.markdown("### 🎧 リスニングチェック")
-    st.write("""
-    英文を聴いて、自分で復唱！  
-    AIが発音を認識し、正解文との一致率をスコア化します。  
-    苦手な発音や単語を見つけて改善しましょう。
-    """)
-    st.link_button("🔊 リスニングチェックへ", "https://example.com/listening")  # ← 後で差し替え
+    a:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(79,70,229,0.2);
+    }
 
-with col2:
-    st.markdown("### 📄 音声レポート生成")
-    st.write("""
-    あなたの発表やスピーチを録音して、  
-    AIが自動で文字起こし＆要約！  
-    Word・PDF形式でレポートを作成します。
-    """)
-    st.link_button("📝 レポート生成へ", "https://example.com/report")  # ← 後で差し替え
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>VoiceGraph</h1>
+    <p>AIで「聴く・話す・残す」をひとつに。<br>あなたの英語学習を進化させる2つのツール。</p>
 
-st.divider()
+    <div class="buttons">
+      <a href="listening.html">🎧 Listening Check</a>
+      <a href="report.html">📄 Voice Report</a>
+    </div>
+  </main>
 
-# ---- フッター ----
-st.caption("© 2025 EchoSense | Powered by Streamlit & OpenAI")
-st.caption("Developed by Team Avinton Project")
+  <footer>© 2025 VoiceGraph AI</footer>
+</body>
+</html>
