@@ -86,7 +86,8 @@ h1 {
   position: relative;
 }
 
-button {
+/* 青系ボタン */
+button.app-btn {
   background: linear-gradient(90deg, #0078ff, #00c3ff);
   color: white;
   border: none;
@@ -101,6 +102,35 @@ button {
   transition: transform 0.15s, box-shadow 0.3s;
 }
 
+/* 暗め緑ボタン（モーダル用） */
+button.guide-btn {
+  background: linear-gradient(90deg, #006644, #004422);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 16px 36px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 0 8px #006644;
+  transition: transform 0.15s, box-shadow 0.3s;
+}
+
+/* ホバー効果 */
+button.app-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(0,180,255,0.8);
+  background: linear-gradient(90deg, #00c3ff, #0078ff);
+}
+
+button.guide-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px #00aa55;
+  background: linear-gradient(90deg, #005533, #007744);
+}
+
 /* 波紋エフェクト */
 button::before {
   content: "";
@@ -109,7 +139,6 @@ button::before {
   top: 50%;
   width: 300%;
   height: 300%;
-  background: rgba(0, 180, 255, 0.2);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
@@ -117,15 +146,12 @@ button::before {
   z-index: 0;
 }
 
+button.app-btn::before { background: rgba(0,180,255,0.2); }
+button.guide-btn::before { background: rgba(0,170,85,0.2); }
+
 button:hover::before {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 18px rgba(0,180,255,0.8);
-  background: linear-gradient(90deg, #00c3ff, #0078ff);
 }
 
 /* ===== モーダル ===== */
@@ -209,12 +235,12 @@ footer {
     </div>
 
     <div class="button-container">
-      <button onclick="location.href='https://kado0314.github.io/listening/'">🎧 リスニングチェックへ</button>
-      <button onclick="location.href='voice_report.html'">🗒️ 音声レポート生成へ</button>
+      <button class="app-btn" onclick="location.href='https://kado0314.github.io/listening/'">🎧 リスニングチェックへ</button>
+      <button class="app-btn" onclick="location.href='voice_report.html'">🗒️ 音声レポート生成へ</button>
     </div>
 
     <div class="button-container">
-      <button onclick="openModal('guideModal')">📘 利用ガイド・操作説明・モデル情報</button>
+      <button class="guide-btn" onclick="openModal('guideModal')">📘 利用ガイド・操作説明・モデル情報</button>
     </div>
 
     <footer>
