@@ -128,12 +128,40 @@ button:hover {
   background: linear-gradient(90deg, #00c3ff, #0078ff);
 }
 
-/* ===== セクション ===== */
-section {
-  text-align: left;
-  margin-bottom: 2em;
+/* ===== モーダル ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
 }
 
+.modal-content {
+  background: var(--bg-card);
+  margin: 10% auto;
+  padding: 30px;
+  border: 1px solid rgba(0,180,255,0.4);
+  width: 90%;
+  max-width: 600px;
+  border-radius: var(--radius);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+/* ===== セクション ===== */
 section h2 {
   font-size: 1.2rem;
   color: var(--accent);
@@ -142,16 +170,8 @@ section h2 {
   margin-bottom: 0.6em;
 }
 
-ul {
-  padding-left: 1.2em;
-  margin: 0;
-}
-
-li {
-  margin-bottom: 0.5em;
-  color: var(--text-sub);
-  line-height: 1.5;
-}
+ul { padding-left: 1.2em; margin:0;}
+li { margin-bottom:0.5em; color:var(--text-sub); line-height:1.5;}
 
 /* ===== フッター ===== */
 footer {
@@ -164,26 +184,15 @@ footer {
 }
 
 /* ===== アニメーション ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeIn { from {opacity:0; transform:translateY(15px);} to {opacity:1; transform:translateY(0);}}
 
 /* ===== スマホ対応 ===== */
-@media (max-width: 768px) {
-  .card {
-    padding: 25px 20px 30px;
-  }
-  h1 {
-    font-size: 1.7rem;
-  }
-  .catch {
-    font-size: 0.95rem;
-  }
-  button {
-    width: 100%;
-    padding: 14px;
-  }
+@media (max-width:768px){
+  .card{padding:25px 20px 30px;}
+  h1{font-size:1.7rem;}
+  .catch{font-size:0.95rem;}
+  button{width:100%; padding:14px;}
+  .modal-content{margin:20% auto;}
 }
 </style>
 </head>
@@ -191,8 +200,8 @@ footer {
 <body>
 <div class="container">
   <div class="card">
-    <h1>💻 EchoSense（エコーセンス）</h1>
-    <div class="subtitle">🎯 声でわかる、学びのAIパートナー。</div>
+    <h1>💻 EchoSense</h1>
+    <div class="subtitle">声でわかる、あなたのAIパートナー。</div>
 
     <div class="catch">
       🎧 <strong>リスニングチェックアプリ：</strong> 英語を“聴いて・話して・記録する”2つのAI体験で、あなたの英語力を見える化します。<br><br>
@@ -204,16 +213,29 @@ footer {
       <button onclick="location.href='voice_report.html'">🗒️ 音声レポート生成へ</button>
     </div>
 
+    <div class="button-container">
+      <button onclick="openModal('guideModal')">📘 利用ガイド・操作説明・モデル情報</button>
+    </div>
+
+    <footer>
+      © 2025 AIプログラミング専攻　天池　楞谷　藤田　本多 — Powered by OpenAI Whisper<br>
+      本アプリはAI演習のために開発されたアプリですよ。発表頑張ります！！！
+    </footer>
+  </div>
+</div>
+
+<!-- モーダル -->
+<div id="guideModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('guideModal')">&times;</span>
     <section>
       <h2>🧩 利用ガイド</h2>
-      <p>EchoSenseは音声を活用したAI支援アプリです。<br>
-      以下の2つのモードであなたの学びや仕事をサポートします。</p>
+      <p>EchoSenseは音声を活用したAI支援アプリです。以下の2つのモードであなたの学びや仕事をサポートします。</p>
       <ul>
         <li>🎧 <b>リスニングチェック：</b> 英語音声を聴いて理解度を測定。</li>
         <li>🗒️ <b>音声レポート生成：</b> 会話・授業・会議などをAIが文字起こし＆要約。</li>
       </ul>
     </section>
-
     <section>
       <h2>📚 操作説明</h2>
       <ul>
@@ -222,21 +244,31 @@ footer {
         <li>AIが自動で結果を生成・保存します。</li>
       </ul>
     </section>
-
     <section>
       <h2>⚙️ モデル情報</h2>
       <ul>
-        <li>音声認識モデル：OpenAI Whisper API</li>
-        <li>要約・分析モデル：GPT-4 Turbo</li>
-        <li>データは学習・改善目的でのみ使用されます。</li>
+        <li>音声認識モデル：</li>
+        <li>要約・分析モデル：</li>
+        <li>データは改善目的でのみ使用されます。</li>
       </ul>
     </section>
-
-    <footer>
-      © 2025 VoiceGraph AI — Powered by OpenAI Whisper<br>
-      本アプリは学習・記録支援のために開発された試験用プロトタイプです。
-    </footer>
   </div>
 </div>
+
+<script>
+function openModal(id){
+  document.getElementById(id).style.display = "block";
+}
+function closeModal(id){
+  document.getElementById(id).style.display = "none";
+}
+// モーダル外クリックで閉じる
+window.onclick = function(event){
+  var modal = document.getElementById('guideModal');
+  if(event.target == modal){
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>
