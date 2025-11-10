@@ -49,13 +49,12 @@ body {
   animation: fadeIn 1s ease;
 }
 
-/* ===== タイトル ===== */
-h1 {
-  font-size: 2.2rem;
+/* ===== タイトル（ロゴ） ===== */
+h1 img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
   margin-bottom: 0.3em;
-  background: linear-gradient(90deg, #00b4ff, #60a3ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
@@ -215,7 +214,7 @@ footer {
 /* ===== スマホ対応 ===== */
 @media (max-width:768px){
   .card{padding:25px 20px 30px;}
-  h1{font-size:1.7rem;}
+  h1 img{max-width:180px;}
   .catch{font-size:0.95rem;}
   button{width:100%; padding:14px;}
   .modal-content{margin:20% auto;}
@@ -226,11 +225,9 @@ footer {
 <body>
 <div class="container">
   <div class="card">
-    <!-- 文字タイトルを削除してロゴに変更 -->
-<h1>
-  <img src="EchoSense.png" alt="EchoSense ロゴ" style="max-width:250px;">
-</h1>
-
+    <h1>
+      <img src="Echo Sense2.png" alt="EchoSense ロゴ">
+    </h1>
     <div class="subtitle">声でわかる、あなたのAIパートナー。</div>
 
     <div class="catch">
