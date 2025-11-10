@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EchoSense - ホーム</title>
+
+<!-- タブアイコン（ファビコン） -->
+<link rel="icon" type="image/png" href="favicon.png">
+
 <style>
 :root {
   --bg-dark: #0a0f24;
@@ -31,7 +35,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 60px 20px;
   box-sizing: border-box;
 }
 
@@ -43,7 +47,7 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--accent-glow);
   width: 100%;
-  max-width: 1200px; /* パソコン表示で広げる */
+  max-width: 900px; /* PC表示でも画面幅いっぱい過ぎないよう調整 */
   padding: 40px 50px;
   text-align: center;
   animation: fadeIn 1s ease;
@@ -51,10 +55,10 @@ body {
 
 /* ===== タイトル（ロゴ） ===== */
 h1 img {
-  max-width: 400px; /* 大きく表示 */
+  max-width: 300px; /* PC表示では大きめ */
   width: 100%;
   height: auto;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.3em;
 }
 
 .subtitle {
@@ -213,8 +217,8 @@ footer {
 
 /* ===== スマホ対応 ===== */
 @media (max-width:768px){
-  .card{padding:25px 15px 30px;}
-  h1 img{max-width:220px;}
+  .card{padding:25px 20px 30px; width: 95%;}
+  h1 img{max-width:200px;}
   .catch{font-size:0.95rem;}
   button{width:100%; padding:14px;}
   .modal-content{margin:20% auto;}
