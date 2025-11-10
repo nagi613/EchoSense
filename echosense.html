@@ -31,7 +31,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 60px 40px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -43,7 +43,7 @@ body {
   border-radius: var(--radius);
   box-shadow: var(--accent-glow);
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px; /* パソコン表示で広げる */
   padding: 40px 50px;
   text-align: center;
   animation: fadeIn 1s ease;
@@ -51,10 +51,10 @@ body {
 
 /* ===== タイトル（ロゴ） ===== */
 h1 img {
-  max-width: 250px;
+  max-width: 400px; /* 大きく表示 */
   width: 100%;
   height: auto;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.5em;
 }
 
 .subtitle {
@@ -213,8 +213,8 @@ footer {
 
 /* ===== スマホ対応 ===== */
 @media (max-width:768px){
-  .card{padding:25px 20px 30px;}
-  h1 img{max-width:180px;}
+  .card{padding:25px 15px 30px;}
+  h1 img{max-width:220px;}
   .catch{font-size:0.95rem;}
   button{width:100%; padding:14px;}
   .modal-content{margin:20% auto;}
