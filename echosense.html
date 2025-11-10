@@ -1,163 +1,242 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoiceGraph | 聴く・話す・残す 英語AIツール</title>
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --card: #fff;
-      --accent: #2563eb;
-      --accent2: #3b82f6;
-      --text: #1e293b;
-      --muted: #64748b;
-      --radius: 20px;
-      --shadow: 0 10px 20px rgba(0,0,0,0.08);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EchoSense - ホーム</title>
+<style>
+:root {
+  --bg-dark: #0a0f24;
+  --bg-card: rgba(20, 30, 60, 0.9);
+  --accent: #00b4ff;
+  --accent-glow: 0 0 15px #00b4ff;
+  --text-main: #e6f0ff;
+  --text-sub: #a0b8ff;
+  --radius: 18px;
+  font-family: "Noto Sans JP", "Poppins", sans-serif;
+}
 
-    * {
-      box-sizing: border-box;
-      font-family: "Noto Sans JP", "Roboto", sans-serif;
-      transition: all 0.3s ease;
-    }
+/* ===== ベース ===== */
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #0b1635 0%, #000814 100%);
+  color: var(--text-main);
+}
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+/* ===== フルスクリーンコンテナ ===== */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 40px;
+  box-sizing: border-box;
+}
 
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-      padding: 40px 20px 60px;
-    }
+/* ===== カード ===== */
+.card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,180,255,0.3);
+  border-radius: var(--radius);
+  box-shadow: var(--accent-glow);
+  width: 100%;
+  max-width: 1000px;
+  padding: 40px 50px;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
 
-    header {
-      margin-bottom: 2rem;
-    }
+/* ===== タイトル ===== */
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.3em;
+  background: linear-gradient(90deg, #00b4ff, #60a3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    h1 {
-      font-size: 2.6rem;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
+.subtitle {
+  font-weight: bold;
+  color: var(--text-sub);
+  margin-bottom: 1.5em;
+}
 
-    h2 {
-      font-size: 1.1rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
+/* ===== キャッチコピー ===== */
+.catch {
+  background: rgba(0,180,255,0.1);
+  border-left: 5px solid var(--accent);
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  text-align: left;
+  font-size: 1rem;
+  margin-bottom: 2em;
+  line-height: 1.6;
+}
 
-    section {
-      max-width: 800px;
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
+/* ===== ボタン ===== */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5em;
+  position: relative;
+}
 
-    section h3 {
-      color: var(--accent);
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
+button {
+  background: linear-gradient(90deg, #0078ff, #00c3ff);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 16px 36px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 0 8px rgba(0,180,255,0.4);
+  transition: transform 0.15s, box-shadow 0.3s;
+}
 
-    section p {
-      color: var(--text);
-      line-height: 1.8;
-      font-size: 1rem;
-    }
+/* 波紋エフェクト */
+button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(0, 180, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  z-index: 0;
+}
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
+button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
 
-    a {
-      display: block;
-      padding: 1.2rem 2rem;
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 1.1rem;
-      width: 250px;
-    }
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(0,180,255,0.8);
+  background: linear-gradient(90deg, #00c3ff, #0078ff);
+}
 
-    a:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(37,99,235,0.25);
-    }
+/* ===== セクション ===== */
+section {
+  text-align: left;
+  margin-bottom: 2em;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
-      color: var(--muted);
-      background: #f1f5f9;
-      width: 100%;
-      border-top: 1px solid #e2e8f0;
-      margin-top: auto;
-    }
-  </style>
+section h2 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  border-left: 4px solid var(--accent);
+  padding-left: 10px;
+  margin-bottom: 0.6em;
+}
+
+ul {
+  padding-left: 1.2em;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 0.5em;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+/* ===== フッター ===== */
+footer {
+  border-top: 1px solid rgba(0,180,255,0.2);
+  margin-top: 1.5em;
+  padding-top: 1em;
+  font-size: 0.85rem;
+  color: #88aaff;
+  text-align: center;
+}
+
+/* ===== アニメーション ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== スマホ対応 ===== */
+@media (max-width: 768px) {
+  .card {
+    padding: 25px 20px 30px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  .catch {
+    font-size: 0.95rem;
+  }
+  button {
+    width: 100%;
+    padding: 14px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <main>
-    <header>
-      <h1>VoiceGraph</h1>
-      <h2>AIで「聴く・話す・残す」をひとつに。</h2>
-    </header>
+<div class="container">
+  <div class="card">
+    <h1>💻 EchoSense（エコーセンス）</h1>
+    <div class="subtitle">🎯 声でわかる、学びのAIパートナー。</div>
 
-    <section>
-      <h3>🎯 アプリ概要</h3>
-      <p>
-        <b>VoiceGraph</b>は、英語学習をより実践的にサポートするAIアプリです。<br>
-        「リスニングチェック」と「音声レポート作成」という2つのAI機能を搭載し、<br>
-        あなたの“英語の理解力”と“発音スキル”を可視化・記録します。
-      </p>
-    </section>
-
-    <section>
-      <h3>🎧 Listening Check（リスニングチェック）</h3>
-      <p>
-        英文を再生し、あなたが聞き取った通りに声で復唱します。<br>
-        AIが音声を認識し、正解との一致度を自動スコア化。<br>
-        苦手な発音・聞き取りを定量的に把握できます。
-      </p>
-    </section>
-
-    <section>
-      <h3>📄 Voice Report（音声レポート作成）</h3>
-      <p>
-        会議や発表、インタビューなどの音声をアップロードすると、<br>
-        AIが自動で文字起こし・要約を行い、WordやPDF形式でレポート化します。<br>
-        学習記録や業務報告にもそのまま使える便利な機能です。
-      </p>
-    </section>
-
-    <div class="buttons">
-      <a href="listening.html">🎧 リスニングチェックを試す</a>
-      <a href="report.html">📄 レポートを作成する</a>
+    <div class="catch">
+      🎧 <strong>リスニングチェックアプリ：</strong> 英語を“聴いて・話して・記録する”2つのAI体験で、あなたの英語力を見える化します。<br><br>
+      🗒️ <strong>音声レポート生成アプリ：</strong> 授業・会議・日常会話など、あらゆる音声をAIが分析。あなたの発話や内容を「データ」として見える化します。
     </div>
-  </main>
 
-  <footer>© 2025 VoiceGraph AI</footer>
+    <div class="button-container">
+      <button onclick="location.href='listening_check.html'">🎧 リスニングチェックへ</button>
+      <button onclick="location.href='voice_report.html'">🗒️ 音声レポート生成へ</button>
+    </div>
+
+    <section>
+      <h2>🧩 利用ガイド</h2>
+      <p>EchoSenseは音声を活用したAI支援アプリです。<br>
+      以下の2つのモードであなたの学びや仕事をサポートします。</p>
+      <ul>
+        <li>🎧 <b>リスニングチェック：</b> 英語音声を聴いて理解度を測定。</li>
+        <li>🗒️ <b>音声レポート生成：</b> 会話・授業・会議などをAIが文字起こし＆要約。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📚 操作説明</h2>
+      <ul>
+        <li>モードを選択して録音または音声ファイルをアップロード。</li>
+        <li>マイクへのアクセスを許可してください。</li>
+        <li>AIが自動で結果を生成・保存します。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>⚙️ モデル情報</h2>
+      <ul>
+        <li>音声認識モデル：OpenAI Whisper API</li>
+        <li>要約・分析モデル：GPT-4 Turbo</li>
+        <li>データは学習・改善目的でのみ使用されます。</li>
+      </ul>
+    </section>
+
+    <footer>
+      © 2025 VoiceGraph AI — Powered by OpenAI Whisper<br>
+      本アプリは学習・記録支援のために開発された試験用プロトタイプです。
+    </footer>
+  </div>
+</div>
 </body>
 </html>
